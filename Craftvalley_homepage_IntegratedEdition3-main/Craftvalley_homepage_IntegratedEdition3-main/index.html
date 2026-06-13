@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Craftvalley — Choose Your Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Cormorant+Garamond:wght@300;400;600&family=M+PLUS+Rounded+1c:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:'Cormorant Garamond','Noto Serif JP',serif;
+      background:#07111c;color:#f5f0e8;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      min-height:100vh;overflow-x:hidden;
+    }
+    body::before{
+      content:'';position:fixed;inset:0;
+      background:radial-gradient(ellipse at 20% 50%,rgba(201,168,76,.07) 0%,transparent 60%),
+                 radial-gradient(ellipse at 80% 30%,rgba(100,149,237,.05) 0%,transparent 60%);
+      pointer-events:none;
+    }
+
+    /* ── Version page ── */
+    .version-page{
+      display:flex;flex-direction:column;align-items:center;
+      padding:40px 20px 60px;opacity:0;transition:opacity .6s ease;
+      width:100%;
+    }
+    .version-page.visible{opacity:1}
+    .logo-mark{
+      font-family:'Noto Serif JP',serif;font-size:13px;
+      letter-spacing:.35em;color:#c9a84c;text-transform:uppercase;margin-bottom:8px;
+    }
+    h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,60px);
+       font-weight:300;letter-spacing:.05em;text-align:center;line-height:1.1;margin-bottom:8px}
+    h1 span{color:#c9a84c}
+    .tagline{font-size:13px;letter-spacing:.15em;color:#b0a090;margin:10px 0 40px;text-align:center}
+
+    /* Grid of 6 version cards */
+    .choices{
+      display:grid;
+      grid-template-columns:repeat(3,220px);
+      gap:20px;
+      justify-content:center;
+    }
+    .choice-card{
+      position:relative;height:290px;border-radius:6px;overflow:hidden;
+      cursor:pointer;text-decoration:none;color:inherit;
+      transition:transform .35s ease,box-shadow .35s ease;
+    }
+    .choice-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.55)}
+
+    /* Theme A: Stylish */
+    .card-a{background:linear-gradient(160deg,#0d1b2a,#1a2e45);border:1px solid rgba(201,168,76,.3)}
+    .card-a::before{content:'';position:absolute;inset:0;
+      background:repeating-linear-gradient(45deg,transparent,transparent 28px,rgba(201,168,76,.03) 28px,rgba(201,168,76,.03) 29px)}
+    /* Theme B: Pop */
+    .card-b{background:linear-gradient(160deg,#c0392b,#e67e22 60%,#f1c40f)}
+    .card-b::before{content:'';position:absolute;inset:0;
+      background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.15),transparent 60%)}
+    /* Theme C: 和風 */
+    .card-c{background:linear-gradient(160deg,#2a0a0a,#5c1a1a);border:2px solid #8B3A0F}
+    .card-c::before{content:'';position:absolute;inset:0;opacity:.15;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 20 L20 0 L40 20 L20 40Z' fill='none' stroke='%23c9a84c' stroke-width='.8'/%3E%3C/svg%3E")}
+    /* Theme D: 和風テック */
+    .card-d{background:linear-gradient(160deg,#050a14,#091528);border:1px solid rgba(0,212,255,.3)}
+    .card-d::before{content:'';position:absolute;inset:0;opacity:.12;
+      background-image:linear-gradient(rgba(0,212,255,.15) 1px,transparent 1px),
+                       linear-gradient(90deg,rgba(0,212,255,.15) 1px,transparent 1px);
+      background-size:30px 30px}
+    /* Theme E: 3D */
+    .card-e{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
+      border:1px solid rgba(233,69,96,.4);
+      box-shadow:0 8px 32px rgba(233,69,96,.15),inset 0 1px 0 rgba(255,255,255,.08)}
+    /* Theme F: Simple */
+    .card-f{background:#fff;border:2px solid #111}
+
+    .card-inner{
+      position:relative;z-index:1;height:100%;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:24px;text-align:center;
+    }
+    .card-icon{font-size:38px;margin-bottom:14px;display:block}
+    .card-ver{font-size:9px;letter-spacing:.4em;text-transform:uppercase;margin-bottom:5px;opacity:.6}
+    .card-title{font-size:22px;font-weight:400;letter-spacing:.06em;margin-bottom:10px;line-height:1.2}
+    .card-desc{font-size:12px;line-height:1.65;opacity:.75}
+    .card-cta{
+      display:inline-block;margin-top:16px;padding:7px 18px;
+      font-size:10px;letter-spacing:.2em;text-transform:uppercase;transition:all .3s;
+    }
+
+    /* Card text colours */
+    .card-a .card-title,.card-a .card-cta{color:#c9a84c;font-family:'Cormorant Garamond',serif}
+    .card-a .card-cta{border:1px solid #c9a84c}
+    .card-a:hover .card-cta{background:#c9a84c;color:#0d1b2a}
+    .card-b .card-title{color:#fff;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700}
+    .card-b .card-cta{background:rgba(255,255,255,.25);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:50px}
+    .card-b:hover .card-cta{background:rgba(255,255,255,.45)}
+    .card-c .card-title{color:#e8c46a;font-family:'Noto Serif JP',serif}
+    .card-c .card-cta{border:1px solid #8B3A0F;color:#e8c46a}
+    .card-c:hover .card-cta{background:#8B3A0F}
+    .card-d .card-title{color:#00d4ff;font-family:'Noto Sans JP',sans-serif;font-weight:700}
+    .card-d .card-cta{border:1px solid rgba(0,212,255,.5);color:#00d4ff;font-family:monospace}
+    .card-d:hover .card-cta{background:rgba(0,212,255,.15)}
+    .card-e .card-title{color:#e94560;font-family:system-ui,sans-serif;font-weight:700}
+    .card-e .card-cta{background:rgba(233,69,96,.2);color:#e94560;border:1px solid rgba(233,69,96,.4);border-radius:4px}
+    .card-e:hover .card-cta{background:rgba(233,69,96,.4)}
+    .card-f .card-ver,.card-f .card-desc{color:#555}
+    .card-f .card-title{color:#111;font-family:'Noto Sans JP','Noto Serif JP',sans-serif;font-weight:700;font-size:20px}
+    .card-f .card-cta{border:2px solid #111;color:#111;font-family:'Noto Sans JP',sans-serif;font-weight:700}
+    .card-f:hover .card-cta{background:#111;color:#fff}
+    .card-f .card-icon,.card-f .card-ver{color:#555}
+
+    .ja-badge{
+      position:absolute;top:12px;right:12px;
+      font-family:'Noto Serif JP',serif;font-size:11px;
+      writing-mode:vertical-rl;letter-spacing:.2em;opacity:.45;
+    }
+    .footnote{margin-top:32px;font-size:11px;letter-spacing:.2em;color:#3a3030;text-align:center}
+
+    /* ── Timer ── */
+    .survey-timer{position:relative;width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+    .timer-svg{position:absolute;inset:0;transform:rotate(-90deg);overflow:visible}
+    .timer-track{fill:none;stroke:rgba(201,168,76,.12);stroke-width:3}
+    .timer-fill{fill:none;stroke:#c9a84c;stroke-width:3;stroke-linecap:round;stroke-dasharray:107;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear,stroke .4s ease}
+    .timer-fill.urgent{stroke:#e05555}
+    .timer-num{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:#c9a84c;position:relative;z-index:1;line-height:1;transition:color .4s ease}
+    .timer-num.urgent{color:#e05555}
+    .timer-expired-label{font-size:9px;letter-spacing:.15em;color:#4a4540;text-align:center;margin-top:4px;animation:fadeInUp .3s ease}
+
+    /* ── SURVEY (identical to before) ── */
+    .survey-overlay{
+      position:fixed;inset:0;z-index:9000;
+      background:rgba(4,9,16,.97);
+      display:flex;align-items:center;justify-content:center;padding:16px;
+      backdrop-filter:blur(6px);transition:opacity .5s ease;
+    }
+    .survey-overlay.hiding{opacity:0;pointer-events:none}
+    .survey-box{
+      width:100%;max-width:580px;background:#111c2a;
+      border:1px solid rgba(201,168,76,.25);border-radius:6px;
+      padding:clamp(24px,5vw,48px);position:relative;
+      animation:surveyIn .5s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    @keyframes surveyIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .survey-lang-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+    .survey-brand{font-family:'Noto Serif JP',serif;font-size:12px;letter-spacing:.35em;color:#c9a84c;text-transform:uppercase}
+    .survey-lang-btn{font-size:11px;letter-spacing:.2em;border:1px solid rgba(201,168,76,.4);color:#c9a84c;padding:4px 12px;border-radius:2px;cursor:pointer;background:transparent;transition:background .25s;font-family:'Noto Serif JP',serif}
+    .survey-lang-btn:hover{background:rgba(201,168,76,.12)}
+    .survey-progress-bar{height:2px;background:rgba(255,255,255,.08);border-radius:1px;margin-bottom:28px;overflow:hidden}
+    .survey-progress-fill{height:100%;background:#c9a84c;border-radius:1px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+    .survey-progress-text{text-align:right;font-size:11px;color:#6e6258;letter-spacing:.15em;margin-bottom:5px}
+    .survey-q{display:none}
+    .survey-q.active{display:block;animation:qIn .35s ease forwards}
+    @keyframes qIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
+    .survey-q-num{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#c9a84c;margin-bottom:10px;display:block}
+    .survey-q-text{font-size:clamp(16px,2.5vw,21px);font-weight:400;line-height:1.45;color:#f5f0e8;margin-bottom:7px}
+    .survey-q-sub{font-size:13px;color:#7a7060;margin-bottom:24px;line-height:1.6;font-style:italic}
+    .survey-options{display:flex;flex-direction:column;gap:9px}
+    .survey-option{
+      display:flex;align-items:center;gap:13px;padding:13px 16px;
+      border:1px solid rgba(255,255,255,.08);border-radius:4px;cursor:pointer;
+      transition:border-color .25s,background .25s;font-size:clamp(13px,1.8vw,15px);color:#c8bfb0;user-select:none;
+    }
+    .survey-option:hover{border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.04);color:#f5f0e8}
+    .survey-option.selected{border-color:#c9a84c;background:rgba(201,168,76,.1);color:#f5f0e8}
+    .survey-option-icon{font-size:19px;flex-shrink:0;width:26px;text-align:center}
+    .survey-option-check{margin-left:auto;width:17px;height:17px;border:1px solid rgba(201,168,76,.3);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .survey-option.selected .survey-option-check{background:#c9a84c;border-color:#c9a84c}
+    .survey-option.selected .survey-option-check::after{content:'✓';font-size:10px;color:#0d1b2a;font-weight:700}
+    .survey-textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#f5f0e8;padding:13px 15px;font-size:15px;border-radius:4px;font-family:'Cormorant Garamond','Noto Serif JP',serif;resize:none;min-height:95px;transition:border-color .25s}
+    .survey-textarea:focus{outline:none;border-color:rgba(201,168,76,.5)}
+    .survey-textarea::placeholder{color:#4a4540}
+    .survey-btn-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px}
+    .survey-btn-next{padding:11px 30px;background:#c9a84c;color:#0d1b2a;font-size:11px;letter-spacing:.25em;text-transform:uppercase;font-family:'Cormorant Garamond',serif;border:none;border-radius:2px;cursor:pointer;transition:background .25s,transform .2s;opacity:.4;pointer-events:none}
+    .survey-btn-next.ready{opacity:1;pointer-events:auto}
+    .survey-btn-next.ready:hover{background:#e8c96a;transform:translateY(-1px)}
+    .survey-btn-skip{font-size:11px;letter-spacing:.15em;color:#4a4540;cursor:pointer;background:none;border:none;transition:color .25s}
+    .survey-btn-skip:hover{color:#8a8070}
+    .survey-result{display:none;text-align:center;animation:qIn .4s ease forwards}
+    .survey-result.active{display:block}
+    .result-emoji{font-size:52px;margin-bottom:18px;display:block}
+    .result-heading{font-size:clamp(20px,3vw,28px);font-weight:300;margin-bottom:10px;color:#f5f0e8;line-height:1.3}
+    .result-heading .gold{color:#c9a84c}
+    .result-sub{font-size:14px;color:#8a8070;line-height:1.7;margin-bottom:24px;font-style:italic}
+    .result-recommendation{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:16px 20px;font-size:13px;color:#c8bfb0;line-height:1.7;margin-bottom:28px;text-align:left}
+    .result-recommendation strong{color:#c9a84c}
+    .btn-enter-site{display:inline-block;padding:13px 36px;background:#c9a84c;color:#0d1b2a;font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-family:'Cormorant Garamond',serif;border:none;border-radius:2px;cursor:pointer;transition:background .25s,transform .2s;text-decoration:none}
+    .btn-enter-site:hover{background:#e8c96a;transform:translateY(-2px)}
+    .result-choose-note{margin-top:14px;font-size:11px;color:#4a4540;letter-spacing:.1em;cursor:pointer}
+    .result-choose-note:hover{color:#8a8070;text-decoration:underline}
+
+    @media(max-width:720px){
+      .choices{grid-template-columns:repeat(2,160px);gap:14px}
+      .choice-card{height:240px}
+      .card-title{font-size:18px}
+    }
+    @media(max-width:440px){
+      .choices{grid-template-columns:1fr 1fr;gap:10px}
+      .choice-card{height:210px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== SURVEY (same as before) ===== -->
+<div class="survey-overlay" id="survey-overlay">
+  <div class="survey-box">
+    <div class="survey-lang-row">
+      <span class="survey-brand" id="s-brand">Craftvalley</span>
+      <!-- Countdown timer -->
+      <div class="survey-timer" id="survey-timer" title="Time remaining for this question">
+        <svg class="timer-svg" viewBox="0 0 44 44" aria-hidden="true">
+          <circle class="timer-track" cx="22" cy="22" r="17"/>
+          <circle class="timer-fill"  cx="22" cy="22" r="17" id="timer-fill"/>
+        </svg>
+        <span class="timer-num" id="timer-num">10</span>
+      </div>
+      <button class="survey-lang-btn" id="survey-lang-btn">日本語</button>
+    </div>
+    <p class="survey-progress-text" id="s-progress-text">Question 1 of 5</p>
+    <div class="survey-progress-bar"><div class="survey-progress-fill" id="s-progress-fill" style="width:20%"></div></div>
+
+    <div class="survey-q active" data-q="1">
+      <span class="survey-q-num" id="s-q1-num">Question 1</span>
+      <p class="survey-q-text" id="s-q1-text">Have you heard of <em style="color:#c9a84c">Craftvalley</em> before?</p>
+      <p class="survey-q-sub" id="s-q1-sub">We're curious how far our story has traveled.</p>
+      <div class="survey-options">
+        <div class="survey-option" data-value="know-well"><span class="survey-option-icon">🌟</span><span id="s-q1-a1">Yes — I know it well</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="heard-of"><span class="survey-option-icon">👂</span><span id="s-q1-a2">I've heard the name before</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="first-time"><span class="survey-option-icon">🆕</span><span id="s-q1-a3">First time hearing about it</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="not-sure"><span class="survey-option-icon">🤔</span><span id="s-q1-a4">Not sure</span><div class="survey-option-check"></div></div>
+      </div>
+    </div>
+    <div class="survey-q" data-q="2">
+      <span class="survey-q-num" id="s-q2-num">Question 2</span>
+      <p class="survey-q-text" id="s-q2-text">When you hear <em style="color:#c9a84c">"Craftvalley"</em>, what image comes to mind?</p>
+      <p class="survey-q-sub" id="s-q2-sub">Go with your first instinct — there's no wrong answer.</p>
+      <div class="survey-options">
+        <div class="survey-option" data-value="traditional-craft"><span class="survey-option-icon">🏺</span><span id="s-q2-a1">Japanese traditional crafts &amp; artisans</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="mountains"><span class="survey-option-icon">🏔️</span><span id="s-q2-a2">Mountain landscapes &amp; nature</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="food-drink"><span class="survey-option-icon">🍶</span><span id="s-q2-a3">Food, fermentation &amp; Japanese flavors</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="modern-brand"><span class="survey-option-icon">✨</span><span id="s-q2-a4">A new &amp; exciting Japanese brand</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="no-image"><span class="survey-option-icon">❓</span><span id="s-q2-a5">No specific image yet</span><div class="survey-option-check"></div></div>
+      </div>
+    </div>
+    <div class="survey-q" data-q="3">
+      <span class="survey-q-num" id="s-q3-num">Question 3</span>
+      <p class="survey-q-text" id="s-q3-text">Have you ever owned or gifted a <em style="color:#c9a84c">traditional Japanese craft</em> object?</p>
+      <p class="survey-q-sub" id="s-q3-sub">Lacquerware, handmade paper, knives, copper ware…</p>
+      <div class="survey-options">
+        <div class="survey-option" data-value="yes-several"><span class="survey-option-icon">💝</span><span id="s-q3-a1">Yes — I collect them</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="yes-once"><span class="survey-option-icon">🎁</span><span id="s-q3-a2">Once or twice</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="want-to"><span class="survey-option-icon">🌱</span><span id="s-q3-a3">Not yet — but I'd love to</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="not-yet"><span class="survey-option-icon">👀</span><span id="s-q3-a4">Not really — just browsing</span><div class="survey-option-check"></div></div>
+      </div>
+    </div>
+    <div class="survey-q" data-q="4">
+      <span class="survey-q-num" id="s-q4-num">Question 4</span>
+      <p class="survey-q-text" id="s-q4-text">What would make you most <em style="color:#c9a84c">excited</em> to explore?</p>
+      <p class="survey-q-sub" id="s-q4-sub">Help us show you what matters most.</p>
+      <div class="survey-options">
+        <div class="survey-option" data-value="artisans"><span class="survey-option-icon">🤲</span><span id="s-q4-a1">Meeting the artisans behind each craft</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="buy"><span class="survey-option-icon">🛍️</span><span id="s-q4-a2">Buying authentic Japanese craft objects</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="story"><span class="survey-option-icon">📖</span><span id="s-q4-a3">Learning the history &amp; stories</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="food"><span class="survey-option-icon">🍱</span><span id="s-q4-a4">Discovering fermented foods &amp; drinks</span><div class="survey-option-check"></div></div>
+        <div class="survey-option" data-value="visit"><span class="survey-option-icon">✈️</span><span id="s-q4-a5">Planning a trip to visit workshops</span><div class="survey-option-check"></div></div>
+      </div>
+    </div>
+    <div class="survey-q" data-q="5">
+      <span class="survey-q-num" id="s-q5-num">Question 5</span>
+      <p class="survey-q-text" id="s-q5-text">Anything you've always wanted to <em style="color:#c9a84c">know about Japan's craft culture</em>?</p>
+      <p class="survey-q-sub" id="s-q5-sub">Optional — your thoughts help shape Craftvalley's story.</p>
+      <textarea class="survey-textarea" id="s-q5-input" placeholder="e.g. How are crafts passed down? What makes Japanese tools special?…" rows="4"></textarea>
+    </div>
+    <div class="survey-result" id="survey-result">
+      <span class="result-emoji" id="result-emoji">🎉</span>
+      <h2 class="result-heading" id="result-heading">Welcome to <span class="gold">Craftvalley</span></h2>
+      <p class="result-sub" id="result-sub">Thank you! Here's where we suggest starting:</p>
+      <div class="result-recommendation" id="result-recommendation">Based on your answers, we recommend exploring the Artisan Profiles.</div>
+      <a href="#" class="btn-enter-site" id="result-enter-btn">Enter Craftvalley →</a>
+      <p class="result-choose-note" id="result-choose-note">Choose your design style below ↓</p>
+    </div>
+    <div class="survey-btn-row" id="survey-btn-row">
+      <button class="survey-btn-skip" id="survey-btn-skip">Skip survey →</button>
+      <button class="survey-btn-next" id="survey-btn-next">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VERSION SELECTOR (6 versions) ===== -->
+<div class="version-page" id="version-page">
+  <p class="logo-mark">Craftvalley — クラフトバレー</p>
+  <h1>Choose Your<br><span>Design Style</span></h1>
+  <p class="tagline">Six visions of Japan's mountain craft heritage</p>
+
+  <div class="choices">
+
+    <!-- A: Stylish -->
+    <a href="stylish/index.html" class="choice-card card-a">
+      <span class="ja-badge" style="color:#c9a84c">雅</span>
+      <div class="card-inner">
+        <span class="card-icon">🏯</span>
+        <p class="card-ver">Version A</p>
+        <h2 class="card-title">Stylish</h2>
+        <p class="card-desc">Deep navy & gold.<br>Quiet Japanese minimalism.</p>
+        <span class="card-cta">Enter</span>
+      </div>
+    </a>
+
+    <!-- B: Pop -->
+    <a href="pop/index.html" class="choice-card card-b">
+      <span class="ja-badge" style="color:#fff">粋</span>
+      <div class="card-inner">
+        <span class="card-icon">🎏</span>
+        <p class="card-ver">Version B</p>
+        <h2 class="card-title">Pop</h2>
+        <p class="card-desc">Vibrant & playful.<br>Craft for a new generation.</p>
+        <span class="card-cta">Enter ✦</span>
+      </div>
+    </a>
+
+    <!-- C: 和風 -->
+    <a href="wafuu/index.html" class="choice-card card-c">
+      <span class="ja-badge" style="color:#e8c46a">和</span>
+      <div class="card-inner">
+        <span class="card-icon">⛩️</span>
+        <p class="card-ver" style="color:#c8a870">Version C</p>
+        <h2 class="card-title">和風</h2>
+        <p class="card-desc" style="color:#c8a870">Japanese Traditional.<br>Vermillion, washi & gold.</p>
+        <span class="card-cta">Enter</span>
+      </div>
+    </a>
+
+    <!-- D: 和風テック -->
+    <a href="wafuu-tech/index.html" class="choice-card card-d">
+      <span class="ja-badge" style="color:#00d4ff">技</span>
+      <div class="card-inner">
+        <span class="card-icon">⚡</span>
+        <p class="card-ver" style="color:#00d4ff;font-family:monospace">Version D</p>
+        <h2 class="card-title">和風テック</h2>
+        <p class="card-desc" style="color:#7ec8e3;font-family:monospace;font-size:11px">Japanese Tech.<br>Cyber meets tradition.</p>
+        <span class="card-cta">[ Enter ]</span>
+      </div>
+    </a>
+
+    <!-- E: 3D -->
+    <a href="threed/index.html" class="choice-card card-e">
+      <span class="ja-badge" style="color:#e94560">立</span>
+      <div class="card-inner">
+        <span class="card-icon">🔮</span>
+        <p class="card-ver" style="color:#e94560">Version E</p>
+        <h2 class="card-title">3D</h2>
+        <p class="card-desc" style="color:#aaa">Depth & dimension.<br>Modern 3D showcase.</p>
+        <span class="card-cta">Enter</span>
+      </div>
+    </a>
+
+    <!-- F: Simple -->
+    <a href="simple/index.html" class="choice-card card-f">
+      <span class="ja-badge" style="color:#111">素</span>
+      <div class="card-inner">
+        <span class="card-icon" style="font-size:34px">◻</span>
+        <p class="card-ver">Version F</p>
+        <h2 class="card-title">Simple</h2>
+        <p class="card-desc">Pure & minimal.<br>Content comes first.</p>
+        <span class="card-cta">Enter</span>
+      </div>
+    </a>
+
+  </div>
+  <p class="footnote">craftvalley.jp &nbsp;|&nbsp; Toyama · Hida · Komatsu, Japan</p>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ── 訪問済みチェック（クッキー） ────────────────────────────
+  // すでにサーベイを完了 or スキップした訪問者は即スキップ
+  // クッキーは有効期限が設定でき、公開サイトとして適切
+  var COOKIE_NAME = "cv_survey_done";
+  var COOKIE_DAYS = 180; // 180日間（約半年）サーベイを再表示しない
+
+  /** クッキーを読む */
+  function getCookie(name) {
+    var m = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  /** クッキーを書く（公開後は Secure フラグも追加推奨） */
+  function setCookie(name, value, days) {
+    var expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = name + "=" + encodeURIComponent(value) +
+      "; expires=" + expires +
+      "; path=/" +
+      "; SameSite=Lax";
+      // HTTPS公開後は末尾に "; Secure" を追加してください
+  }
+
+  var overlay     = document.getElementById("survey-overlay");
+  var versionPage = document.getElementById("version-page");
+
+  if (getCookie(COOKIE_NAME)) {
+    // 2回目以降: オーバーレイを非表示にして版選択画面を直接表示
+    overlay.style.display = "none";
+    versionPage.classList.add("visible");
+    return; // 以降のサーベイ初期化をすべてスキップ
+  }
+
+  // ── テキストデータ ────────────────────────────────────────────
+  var TEXT={en:{brand:"Craftvalley",langBtn:"日本語",progress:["Question {n} of 5","Complete!"],skip:"Skip survey →",next:"Continue",finish:"See My Results",qs:[{num:"Question 1",text:'Have you heard of <em style="color:#c9a84c">Craftvalley</em> before?',sub:"We're curious how far our story has traveled.",options:[{icon:"🌟",label:"Yes — I know it well",val:"know-well"},{icon:"👂",label:"I've heard the name before",val:"heard-of"},{icon:"🆕",label:"First time hearing about it",val:"first-time"},{icon:"🤔",label:"Not sure",val:"not-sure"}]},{num:"Question 2",text:'When you hear <em style="color:#c9a84c">"Craftvalley"</em>, what image comes to mind?',sub:"Go with your first instinct.",options:[{icon:"🏺",label:"Japanese traditional crafts & artisans",val:"traditional-craft"},{icon:"🏔️",label:"Mountain landscapes & nature",val:"mountains"},{icon:"🍶",label:"Food, fermentation & Japanese flavors",val:"food-drink"},{icon:"✨",label:"A new & exciting Japanese brand",val:"modern-brand"},{icon:"❓",label:"No specific image yet",val:"no-image"}]},{num:"Question 3",text:'Have you ever owned or gifted a <em style="color:#c9a84c">traditional Japanese craft</em> object?',sub:"Lacquerware, handmade paper, knives, copper ware…",options:[{icon:"💝",label:"Yes — I collect them",val:"yes-several"},{icon:"🎁",label:"Once or twice",val:"yes-once"},{icon:"🌱",label:"Not yet — but I'd love to",val:"want-to"},{icon:"👀",label:"Not really — just browsing",val:"not-yet"}]},{num:"Question 4",text:'What would make you most <em style="color:#c9a84c">excited</em> to explore?',sub:"Help us show you what matters most.",options:[{icon:"🤲",label:"Meeting the artisans behind each craft",val:"artisans"},{icon:"🛍️",label:"Buying authentic Japanese craft objects",val:"buy"},{icon:"📖",label:"Learning the history & stories",val:"story"},{icon:"🍱",label:"Discovering fermented foods & drinks",val:"food"},{icon:"✈️",label:"Planning a trip to visit workshops",val:"visit"}]},{num:"Question 5",text:'Anything you\'ve always wanted to <em style="color:#c9a84c">know about Japan\'s craft culture</em>?',sub:"Optional — your thoughts help shape Craftvalley's story.",freeText:true,placeholder:"e.g. How are crafts passed down? What makes Japanese tools special?…"}],results:{"artisans":{emoji:"🤲",heading:"Meet the Makers",rec:'Start with the <strong>Artisan Profiles</strong> — six studios, six remarkable stories.'},"buy":{emoji:"🛍️",heading:"The Collection Awaits",rec:'Head to the <strong>Shop</strong> — eight carefully curated items, each with an artisan story.'},"story":{emoji:"📖",heading:"Dive Into the Story",rec:'Start with <strong>About Craftvalley</strong> — the mountain corridor, the heritage, the vision.'},"food":{emoji:"🍶",heading:"A World of Flavor",rec:'Explore <strong>Ecchu Craft Brewery</strong> and <strong>Hida Koji Studio</strong> artisan profiles.'},"visit":{emoji:"✈️",heading:"Plan Your Journey",rec:'Check <strong>Events</strong> for Artisan Experience Tours and workshop directions.'},"default":{emoji:"🎉",heading:"Welcome to Craftvalley",rec:'Explore at your own pace — artisans, collection, or the story of the region.'}},resultSub:"Thank you for sharing. Here's where we think you'll want to start:",enterSite:"Enter Craftvalley →",chooseNote:"Choose your design style below ↓"},ja:{brand:"クラフトバレー",langBtn:"English",progress:["質問 {n} / 5","完了！"],skip:"スキップ →",next:"次へ",finish:"結果を見る",qs:[{num:"質問 1",text:'<em style="color:#c9a84c">クラフトバレー</em>をご存知でしたか？',sub:"私たちの物語がどこまで届いているか、知りたいのです。",options:[{icon:"🌟",label:"はい、よく知っています",val:"know-well"},{icon:"👂",label:"名前は聞いたことがあります",val:"heard-of"},{icon:"🆕",label:"今日初めて知りました",val:"first-time"},{icon:"🤔",label:"よくわかりません",val:"not-sure"}]},{num:"質問 2",text:'<em style="color:#c9a84c">「クラフトバレー」</em>と聞いて、どんなイメージが浮かびますか？',sub:"直感でお選びください。",options:[{icon:"🏺",label:"日本の伝統工芸・職人の技",val:"traditional-craft"},{icon:"🏔️",label:"山岳の風景・大自然",val:"mountains"},{icon:"🍶",label:"発酵食品・日本の味わい",val:"food-drink"},{icon:"✨",label:"新しいおしゃれな日本ブランド",val:"modern-brand"},{icon:"❓",label:"まだ特にイメージがない",val:"no-image"}]},{num:"質問 3",text:'日本の<em style="color:#c9a84c">伝統工芸品</em>を購入・贈り物にしたことはありますか？',sub:"漆器・和紙・包丁・銅器など",options:[{icon:"💝",label:"はい、よく購入します",val:"yes-several"},{icon:"🎁",label:"1〜2回あります",val:"yes-once"},{icon:"🌱",label:"まだありませんが、ぜひ欲しい",val:"want-to"},{icon:"👀",label:"まだ特に考えていません",val:"not-yet"}]},{num:"質問 4",text:'このサイトで最も<em style="color:#c9a84c">楽しみにしていること</em>は？',sub:"あなたが気になることを教えてください。",options:[{icon:"🤲",label:"職人・生産者たちに出会うこと",val:"artisans"},{icon:"🛍️",label:"本物の工芸品を購入すること",val:"buy"},{icon:"📖",label:"地域の歴史・ストーリーを知ること",val:"story"},{icon:"🍱",label:"発酵食品・クラフトビールの発見",val:"food"},{icon:"✈️",label:"いつか工房を訪問したい",val:"visit"}]},{num:"質問 5",text:'日本の<em style="color:#c9a84c">工芸文化</em>について気になっていることは？',sub:"任意回答です。あなたの声がクラフトバレーを形作ります。",freeText:true,placeholder:"例：伝統工芸はどうやって受け継がれるの？…"}],results:{"artisans":{emoji:"🤲",heading:"職人に会いに行こう",rec:'まずは<strong>職人プロフィール</strong>をどうぞ — 6つの工房、6つの物語。'},"buy":{emoji:"🛍️",heading:"コレクションを見てみよう",rec:'<strong>ショップ</strong>へ — 8つの厳選商品。それぞれに職人の物語が宿っています。'},"story":{emoji:"📖",heading:"物語に飛び込もう",rec:'<strong>クラフトバレーについて</strong>から — 山岳回廊と工芸の系譜を知ることができます。'},"food":{emoji:"🍶",heading:"発酵の世界へ",rec:'<strong>越中麦酒醸造所</strong>と<strong>飛騨こうじ工房</strong>のプロフィールをぜひ。'},"visit":{emoji:"✈️",heading:"旅の計画をはじめよう",rec:'<strong>イベント</strong>で職人体験ツアーをチェック。工房へのアクセスも掲載。'},"default":{emoji:"🎉",heading:"クラフトバレーへようこそ",rec:'ゆっくり探索してください。'}},resultSub:"ご回答ありがとうございます。おすすめの出発点をご提案します。",enterSite:"クラフトバレーへ →",chooseNote:"デザインスタイルを選んでください ↓"}};
+
+  // ── 状態変数 ──────────────────────────────────────────────────
+  var lang="en", currentQ=1, answers={};
+  var btnNext      = document.getElementById("survey-btn-next");
+  var btnSkip      = document.getElementById("survey-btn-skip");
+  var btnRow       = document.getElementById("survey-btn-row");
+  var progressFill = document.getElementById("s-progress-fill");
+  var progressText = document.getElementById("s-progress-text");
+
+  // ── タイマー ──────────────────────────────────────────────────
+  var TIMER_DURATION = 10;  // 1問あたりの秒数
+  var timerInterval  = null;
+  var timerCount     = TIMER_DURATION;
+  var timerFillEl    = document.getElementById("timer-fill");
+  var timerNumEl     = document.getElementById("timer-num");
+  // SVG円の周長 (2 * π * r=17 ≈ 106.8)
+  var CIRC = 2 * Math.PI * 17;
+
+  function updateTimerUI() {
+    if (!timerNumEl || !timerFillEl) return;
+    timerNumEl.textContent = timerCount;
+    // stroke-dashoffset で残り時間を表現 (0=満タン, CIRC=空)
+    var offset = CIRC * (1 - timerCount / TIMER_DURATION);
+    timerFillEl.style.strokeDashoffset = offset;
+    timerFillEl.style.strokeDasharray  = CIRC;
+    var urgent = timerCount <= 3;
+    timerNumEl.classList.toggle("urgent", urgent);
+    timerFillEl.classList.toggle("urgent", urgent);
+  }
+
+  function clearTimer() {
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  }
+
+  function startTimer() {
+    clearTimer();
+    timerCount = TIMER_DURATION;
+    updateTimerUI();
+    // タイマーを表示
+    var timerEl = document.getElementById("survey-timer");
+    if (timerEl) timerEl.style.display = "flex";
+
+    timerInterval = setInterval(function () {
+      timerCount--;
+      updateTimerUI();
+      if (timerCount <= 0) {
+        clearTimer();
+        // 時間切れ → 強制で次の質問へ
+        advanceQuestion(true);
+      }
+    }, 1000);
+  }
+
+  // タイマーを隠す（結果画面・スキップ後）
+  function hideTimer() {
+    clearTimer();
+    var timerEl = document.getElementById("survey-timer");
+    if (timerEl) timerEl.style.display = "none";
+  }
+
+  // ── 共通の「次の質問へ進む」ロジック ─────────────────────────
+  // forced=true のときは選択なしでも進む（タイマー切れ時）
+  function advanceQuestion(forced) {
+    if (!forced && !btnNext.classList.contains("ready")) return;
+    if (currentQ < 5) {
+      document.querySelector('.survey-q[data-q="'+currentQ+'"]').classList.remove("active");
+      currentQ++;
+      document.querySelector('.survey-q[data-q="'+currentQ+'"]').classList.add("active");
+      updateProgress();
+      updateNextBtn();
+      startTimer(); // 次の質問のタイマーを開始
+    } else {
+      showResult();
+    }
+  }
+
+  // ── レンダリング ──────────────────────────────────────────────
+  function render() {
+    var t = TEXT[lang];
+    document.getElementById("s-brand").textContent = t.brand;
+    document.getElementById("survey-lang-btn").textContent = t.langBtn;
+    btnSkip.textContent = t.skip;
+    t.qs.forEach(function (q, i) {
+      var qn = i + 1, el = document.querySelector('.survey-q[data-q="'+qn+'"]');
+      if (!el) return;
+      el.querySelector(".survey-q-num").textContent = q.num;
+      el.querySelector(".survey-q-text").innerHTML  = q.text;
+      el.querySelector(".survey-q-sub").textContent  = q.sub;
+      if (q.freeText) {
+        var ta = el.querySelector(".survey-textarea");
+        if (ta) ta.placeholder = q.placeholder;
+      } else {
+        var opts = el.querySelectorAll(".survey-option");
+        q.options.forEach(function (opt, j) {
+          if (opts[j]) {
+            opts[j].querySelectorAll("span")[1].textContent = opt.label;
+            opts[j].setAttribute("data-value", opt.val);
+          }
+        });
+      }
+    });
+    updateProgress();
+    updateNextBtn();
+    // ※ 言語切替時はタイマーをリセットしない（現在の残り秒数を維持）
+  }
+
+  function updateProgress() {
+    var t = TEXT[lang], isR = document.getElementById("survey-result").classList.contains("active");
+    progressText.textContent = isR ? t.progress[1] : t.progress[0].replace("{n}", currentQ);
+    progressFill.style.width = (isR ? 100 : currentQ / 5 * 100) + "%";
+  }
+
+  function updateNextBtn() {
+    var t = TEXT[lang], isLast = currentQ === 5;
+    btnNext.textContent = isLast ? t.finish : t.next;
+    var qEl = document.querySelector('.survey-q[data-q="'+currentQ+'"]');
+    var sel = qEl && qEl.querySelector(".survey-option.selected");
+    var isFT = qEl && !!qEl.querySelector(".survey-textarea");
+    (sel || isFT) ? btnNext.classList.add("ready") : btnNext.classList.remove("ready");
+  }
+
+  // ── 選択肢クリック ────────────────────────────────────────────
+  document.querySelectorAll(".survey-q").forEach(function (qEl) {
+    qEl.querySelectorAll(".survey-option").forEach(function (opt) {
+      opt.addEventListener("click", function () {
+        qEl.querySelectorAll(".survey-option").forEach(function (o) { o.classList.remove("selected"); });
+        opt.classList.add("selected");
+        answers[currentQ] = opt.getAttribute("data-value");
+        btnNext.classList.add("ready");
+      });
+    });
+  });
+  var ta = document.getElementById("s-q5-input");
+  if (ta) ta.addEventListener("input", function () { answers[5] = ta.value; });
+
+  // ── ボタン ────────────────────────────────────────────────────
+  btnNext.addEventListener("click", function () { advanceQuestion(false); });
+  btnSkip.addEventListener("click", dismiss);
+
+  // ── 結果表示 ──────────────────────────────────────────────────
+  function showResult() {
+    hideTimer(); // タイマー停止＆非表示
+    setCookie(COOKIE_NAME, "1", COOKIE_DAYS); // 訪問記録（クッキー）
+    document.querySelectorAll(".survey-q").forEach(function (q) { q.classList.remove("active"); });
+    btnRow.style.display = "none";
+    var t = TEXT[lang], key = answers[4] || "default", res = t.results[key] || t.results["default"];
+    document.getElementById("result-emoji").textContent = res.emoji;
+    document.getElementById("result-heading").innerHTML = res.heading + ' — <span class="gold">Craftvalley</span>';
+    document.getElementById("result-sub").textContent = t.resultSub;
+    document.getElementById("result-recommendation").innerHTML = res.rec;
+    document.getElementById("result-enter-btn").textContent = t.enterSite;
+    document.getElementById("result-enter-btn").href = "stylish/index.html";
+    document.getElementById("result-choose-note").textContent = t.chooseNote;
+    document.getElementById("survey-result").classList.add("active");
+    updateProgress();
+  }
+
+  // ── 閉じる ────────────────────────────────────────────────────
+  function dismiss() {
+    hideTimer(); // タイマー停止
+    setCookie(COOKIE_NAME, "1", COOKIE_DAYS); // 訪問記録（クッキー）
+    overlay.classList.add("hiding");
+    setTimeout(function () {
+      overlay.style.display = "none";
+      versionPage.classList.add("visible");
+    }, 500);
+  }
+
+  document.getElementById("result-choose-note").addEventListener("click", dismiss);
+  document.getElementById("survey-lang-btn").addEventListener("click", function () {
+    lang = lang === "en" ? "ja" : "en";
+    render();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && btnNext.classList.contains("ready")) advanceQuestion(false);
+  });
+
+  // ── 初期化 ────────────────────────────────────────────────────
+  render();
+  startTimer(); // 最初の質問のタイマーを開始
+
+})();
+</script>
+</body>
+</html>

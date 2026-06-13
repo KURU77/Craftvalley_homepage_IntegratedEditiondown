@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News | 和風 — Craftvalley</title>
+  <meta name="description" content="News and announcements from Craftvalley — press features, new artisans, shop updates and event information.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page-type="news">
+
+<button class="sidebar-hamburger" id="sidebar-hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="page-wrapper">
+
+  <aside class="sidebar" id="main-sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-kamon"></div>
+      <span class="sidebar-logo-text">クラフトバレー</span>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html"><span class="nav-ja">ホーム</span><span class="nav-en">Home</span></a></li>
+      <li><a href="about.html"><span class="nav-ja">概要</span><span class="nav-en">About</span></a></li>
+      <li><a href="producers.html"><span class="nav-ja">職人</span><span class="nav-en">Artisans</span></a></li>
+      <li><a href="products.html"><span class="nav-ja">商品</span><span class="nav-en">Shop</span></a></li>
+      <li><a href="events-upcoming.html"><span class="nav-ja">催事</span><span class="nav-en">Events</span></a></li>
+      <li><a href="news.html" class="active"><span class="nav-ja">情報</span><span class="nav-en">News</span></a></li>
+      <li><a href="contact.html"><span class="nav-ja">問合</span><span class="nav-en">Contact</span></a></li>
+    </ul>
+    <div class="sidebar-bottom">
+      <button class="sidebar-lang">日本語</button>
+    </div>
+  </aside>
+
+  <div class="main-content">
+
+    <div class="page-hero" data-kanji="報">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a><span>›</span><span data-i18n="nav.news">News</span></div>
+        <div class="section-label">News — 情報</div>
+        <h1 data-i18n="news.heading">News &amp; Announcements</h1>
+      </div>
+    </div>
+
+    <div class="news-page">
+      <div class="container">
+
+        <!-- Featured -->
+        <div class="info-banner fade-in" style="align-items:flex-start">
+          <span class="info-banner-icon">📌</span>
+          <div style="flex:1">
+            <p class="info-banner-title" data-i18n="ui.featuredTitle">Craftvalley US Online Shop Now Open</p>
+            <p class="info-banner-sub" style="margin:6px 0 12px" data-i18n="ui.featuredDesc">All six founding artisan collections ship to all 50 US states. Free shipping on orders over $150 via DHL Express.</p>
+            <a href="products.html" class="btn-primary" style="padding:8px 20px;font-size:11px" data-i18n="ui.shopNow">Shop Now</a>
+          </div>
+        </div>
+
+        <!-- Category filter -->
+        <div class="news-filter-bar" id="news-filter-bar">
+          <button class="filter-btn active" data-filter="all" data-i18n="news.category.all">All</button>
+          <button class="filter-btn" data-filter="press" data-i18n="news.category.press">Press</button>
+          <button class="filter-btn" data-filter="event" data-i18n="news.category.event">Events</button>
+          <button class="filter-btn" data-filter="producer" data-i18n="news.category.producer">Artisans</button>
+          <button class="filter-btn" data-filter="shop" data-i18n="news.category.shop">Shop</button>
+        </div>
+
+        <!-- News list — populated by JS -->
+        <div class="news-full-grid" id="news-full-grid"></div>
+
+        <!-- Newsletter CTA -->
+        <div class="cta-block fade-in">
+          <div class="section-label">便り — Newsletter</div>
+          <h3 data-i18n="ui.newsletterTitle">Get news delivered monthly</h3>
+          <p data-i18n="ui.newsletterDesc">New artisans, product launches and event announcements — once a month.</p>
+          <form style="display:flex;max-width:400px;margin:0 auto;position:relative" onsubmit="return false">
+            <input type="email" class="form-input" placeholder="Your email address" data-i18n-placeholder="footer.newsletterPlaceholder" style="border-right:none">
+            <button type="submit" class="form-submit" style="width:auto;padding:11px 22px;white-space:nowrap" data-i18n="footer.newsletterBtn">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <p class="footer-logo-en">Craft<span>valley</span></p>
+            <p class="footer-logo-ja">クラフトバレー</p>
+            <p class="footer-tagline" data-i18n="footer.tagline">Crafted in Japan's Mountain Heartland</p>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="footer.links">Quick Links</h4>
+            <ul>
+              <li><a href="about.html" data-i18n="nav.about">About Craftvalley</a></li>
+              <li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li>
+              <li><a href="products.html" data-i18n="nav.products">Shop</a></li>
+              <li><a href="news.html" data-i18n="nav.news">News</a></li>
+              <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="nav.events">Events</h4>
+            <ul>
+              <li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a></li>
+              <li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li>
+              <li><a href="calendar.html" data-i18n="nav.calendar">Event Calendar</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="footer.newsletter">Newsletter</h4>
+            <p style="font-size:12px;color:rgba(244,237,216,.4);margin-bottom:10px;font-family:var(--ff-ja)">新作・催事のお知らせを毎月お届けします。</p>
+            <form class="footer-newsletter-form" onsubmit="return false">
+              <input type="email" placeholder="Your email address" data-i18n-placeholder="footer.newsletterPlaceholder">
+              <button type="submit" data-i18n="footer.newsletterBtn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copy" data-i18n="footer.copyright">© 2026 Craftvalley Initiative. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="#" data-i18n="footer.terms">Terms of Use</a>
+            <a href="../index.html">← Version Select</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.main-content -->
+</div><!-- /.page-wrapper -->
+
+<script src="../shared/js/translations.js"></script>
+<script src="../shared/js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  function applyFilter(cat) {
+    document.querySelectorAll("#news-full-grid .news-full-card").forEach(function(card) {
+      card.style.display = (cat === "all" || card.getAttribute("data-category") === cat) ? "" : "none";
+    });
+  }
+  document.querySelectorAll("#news-filter-bar .filter-btn").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      document.querySelectorAll("#news-filter-bar .filter-btn").forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      applyFilter(btn.getAttribute("data-filter"));
+    });
+  });
+  // Cards are rebuilt on language change — re-apply the active filter
+  document.addEventListener("cv-lang-change", function() {
+    var active = document.querySelector("#news-filter-bar .filter-btn.active");
+    applyFilter(active ? active.getAttribute("data-filter") : "all");
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Past Events | 和風 — Craftvalley</title>
+  <meta name="description" content="A look back at past Craftvalley events — exhibitions, pop-up shops, tastings and workshops in Japan and overseas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page-type="events-past">
+
+<button class="sidebar-hamburger" id="sidebar-hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="page-wrapper">
+
+  <aside class="sidebar" id="main-sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-kamon"></div>
+      <span class="sidebar-logo-text">クラフトバレー</span>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html"><span class="nav-ja">ホーム</span><span class="nav-en">Home</span></a></li>
+      <li><a href="about.html"><span class="nav-ja">概要</span><span class="nav-en">About</span></a></li>
+      <li><a href="producers.html"><span class="nav-ja">職人</span><span class="nav-en">Artisans</span></a></li>
+      <li><a href="products.html"><span class="nav-ja">商品</span><span class="nav-en">Shop</span></a></li>
+      <li><a href="events-upcoming.html" class="active"><span class="nav-ja">催事</span><span class="nav-en">Events</span></a></li>
+      <li><a href="news.html"><span class="nav-ja">情報</span><span class="nav-en">News</span></a></li>
+      <li><a href="contact.html"><span class="nav-ja">問合</span><span class="nav-en">Contact</span></a></li>
+    </ul>
+    <div class="sidebar-bottom">
+      <button class="sidebar-lang">日本語</button>
+    </div>
+  </aside>
+
+  <div class="main-content">
+
+    <div class="page-hero" data-kanji="歴">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a><span>›</span><span data-i18n="nav.events">Events</span><span>›</span><span data-i18n="nav.eventsPast">Past Events</span></div>
+        <div class="section-label">Events — 催事</div>
+        <h1 data-i18n="events.pastHeading">Event History</h1>
+      </div>
+    </div>
+
+    <div class="events-page">
+      <div class="container">
+
+        <!-- Events sub-navigation -->
+        <nav class="subnav">
+          <a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a>
+          <a href="events-past.html" class="active" data-i18n="nav.eventsPast">Past Events</a>
+          <a href="calendar.html" data-i18n="nav.calendar">Calendar</a>
+        </nav>
+
+        <!-- Photo montage -->
+        <div class="gallery-grid" style="margin-bottom:40px">
+          <div class="gallery-item">
+            <div class="image-placeholder"><span class="image-placeholder-label">📸</span><div class="image-placeholder-note">EVENT PHOTO — Craftvalley Launch Exhibition, Takaoka Oct 2024. Crowd and copper displays.</div></div>
+          </div>
+          <div class="gallery-item">
+            <div class="image-placeholder"><span class="image-placeholder-label">📸</span><div class="image-placeholder-note">EVENT PHOTO — NYC Chelsea Market pop-up Dec 2024. Booth with products and artisan.</div></div>
+          </div>
+          <div class="gallery-item">
+            <div class="image-placeholder"><span class="image-placeholder-label">📸</span><div class="image-placeholder-note">EVENT PHOTO — Spring Workshop Hida Apr 2025. Hands-on lacquerware session.</div></div>
+          </div>
+        </div>
+
+        <div id="full-events-list">
+          <!-- Populated by JS via data-page-type="events-past" -->
+        </div>
+
+        <div style="text-align:center;margin-top:40px">
+          <a href="events-upcoming.html" class="btn-primary" data-i18n="ui.seeNext">See What's Next</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <p class="footer-logo-en">Craft<span>valley</span></p>
+            <p class="footer-logo-ja">クラフトバレー</p>
+            <p class="footer-tagline" data-i18n="footer.tagline">Crafted in Japan's Mountain Heartland</p>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="footer.links">Quick Links</h4>
+            <ul>
+              <li><a href="about.html" data-i18n="nav.about">About Craftvalley</a></li>
+              <li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li>
+              <li><a href="products.html" data-i18n="nav.products">Shop</a></li>
+              <li><a href="news.html" data-i18n="nav.news">News</a></li>
+              <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="nav.events">Events</h4>
+            <ul>
+              <li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a></li>
+              <li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li>
+              <li><a href="calendar.html" data-i18n="nav.calendar">Event Calendar</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="footer.newsletter">Newsletter</h4>
+            <p style="font-size:12px;color:rgba(244,237,216,.4);margin-bottom:10px;font-family:var(--ff-ja)">新作・催事のお知らせを毎月お届けします。</p>
+            <form class="footer-newsletter-form" onsubmit="return false">
+              <input type="email" placeholder="Your email address" data-i18n-placeholder="footer.newsletterPlaceholder">
+              <button type="submit" data-i18n="footer.newsletterBtn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copy" data-i18n="footer.copyright">© 2026 Craftvalley Initiative. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="#" data-i18n="footer.terms">Terms of Use</a>
+            <a href="../index.html">← Version Select</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.main-content -->
+</div><!-- /.page-wrapper -->
+
+<script src="../shared/js/translations.js"></script>
+<script src="../shared/js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

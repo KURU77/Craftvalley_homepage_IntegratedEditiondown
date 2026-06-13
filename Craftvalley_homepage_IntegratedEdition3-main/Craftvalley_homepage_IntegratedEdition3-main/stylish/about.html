@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Craftvalley — Japan's Mountain Craft Heritage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-en">Craft<span>valley</span></span><span class="nav-logo-ja">クラフトバレー</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="about.html" class="active" data-i18n="nav.about">About Craftvalley</a></li>
+      <li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li>
+      <li><a href="products.html" data-i18n="nav.products">Shop</a></li>
+      <li class="nav-dropdown">
+        <a href="events-upcoming.html" data-i18n="nav.events">Events</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a></li>
+          <li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html" data-i18n="nav.news">News</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-lang">日本語</button>
+      <button class="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobile-nav">
+  <a href="index.html" data-i18n="nav.home">Home</a>
+  <a href="about.html" data-i18n="nav.about">About Craftvalley</a>
+  <a href="producers.html" data-i18n="nav.producers">Artisans</a>
+  <a href="products.html" data-i18n="nav.products">Shop</a>
+  <a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a>
+  <a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a>
+  <a href="calendar.html" data-i18n="nav.calendar">Calendar</a>
+  <a href="news.html" data-i18n="nav.news">News</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  <button class="mobile-lang">日本語</button>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero" data-kanji="工">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <span data-i18n="nav.about">About Craftvalley</span>
+      </div>
+      <span class="ja-label">概要 — About</span>
+      <h1 data-i18n="about.heading">About Craftvalley</h1>
+    </div>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div style="position:relative;height:360px;overflow:hidden;background:var(--navy2)">
+  <div class="image-placeholder" style="height:100%">
+    <span class="image-placeholder-label">🏔️</span>
+    <div class="image-placeholder-note">ABOUT PAGE HERO — Wide landscape showing all three regions: split-screen or panoramic of Takaoka copper workshops, mountain pass to Hida, Komatsu cityscape. OR: birds-eye view of the mountain valley connecting the regions.</div>
+  </div>
+</div>
+
+<!-- ABOUT CONTENT -->
+<div class="about-page">
+  <div class="container">
+
+    <!-- Vision & Mission -->
+    <div class="about-vision fade-in">
+      <div class="about-vision-block">
+        <h3 data-i18n="about.visionHeading">Our Vision</h3>
+        <p data-i18n="about.vision">We believe that exceptional craft deserves a global audience. Craftvalley is building bridges between Japan's most dedicated artisans and people around the world who value authenticity, beauty and the stories behind objects.</p>
+      </div>
+      <div class="about-vision-block fade-in fade-in-delay-2">
+        <h3 data-i18n="about.missionHeading">Our Mission</h3>
+        <p data-i18n="about.mission">To sustain traditional crafts by connecting their makers directly with international markets — starting with the United States — while preserving the landscapes, communities and knowledge that make this region unique.</p>
+      </div>
+    </div>
+
+    <!-- Region description -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;margin-bottom:80px" class="fade-in">
+      <div>
+        <span class="ja-label">地域 — Region</span>
+        <h2 class="section-heading" data-i18n="about.regionHeading">The Region</h2>
+        <p style="color:var(--textm);font-size:16px;line-height:1.9" data-i18n="about.region">The Craftvalley corridor runs along the ancient trade route...</p>
+
+        <!-- Three region cards -->
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:32px">
+          <div class="pillar">
+            <span class="pillar-icon">🏭</span>
+            <div>
+              <p class="pillar-title" style="color:#c9a84c">Western Toyama — 富山県呉西</p>
+              <p class="pillar-desc">Takaoka (copper, lacquer), Nanto (washi), Imizu (craft beer) · Pop. ~380,000</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🌲</span>
+            <div>
+              <p class="pillar-title" style="color:#7a9e7e">Hida City — 飛騨市 (Gifu)</p>
+              <p class="pillar-desc">Hida-Furukawa (Shunkei lacquer, koji fermentation) · Pop. ~23,000</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">⚒️</span>
+            <div>
+              <p class="pillar-title" style="color:#6a9fc0">Komatsu — 小松市 (Ishikawa)</p>
+              <p class="pillar-desc">Kaga cutlery, traditional textiles · Pop. ~105,000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="concept-image-frame fade-in fade-in-delay-2">
+        <div class="image-placeholder" style="min-height:440px">
+          <span class="image-placeholder-label">🗾</span>
+          <div class="image-placeholder-note">REGION IMAGE — Illustrated or photographic map of the three-prefecture area, showing cultural icons of each region (copper ingot, lacquer bowl, knife). Warm earthy tones.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="fade-in">
+      <span class="ja-label">年表 — Timeline</span>
+      <h2 class="section-heading" data-i18n="about.timelineHeading">Craftvalley Timeline</h2>
+      <div class="timeline" style="margin-top:40px">
+        <div class="timeline-item"><p class="timeline-year">2023</p><p class="timeline-event">Craftvalley concept launched by regional artisan coalition</p></div>
+        <div class="timeline-item"><p class="timeline-year">2024 Spring</p><p class="timeline-event">First artisan survey — 23 workshops documented</p></div>
+        <div class="timeline-item"><p class="timeline-year">2024 Autumn</p><p class="timeline-event">Craftvalley Launch Exhibition, Takaoka City Museum</p></div>
+        <div class="timeline-item"><p class="timeline-year">2024 Winter</p><p class="timeline-event">First US pop-up event at Chelsea Market, New York City</p></div>
+        <div class="timeline-item"><p class="timeline-year">2025</p><p class="timeline-event">Official website &amp; US online shop launch</p></div>
+        <div class="timeline-item"><p class="timeline-year">2025+</p><p class="timeline-event">Expanding artisan network and export program</p></div>
+      </div>
+    </div>
+
+    <!-- Supporting image row -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:80px" class="fade-in">
+      <div class="image-placeholder" style="aspect-ratio:1;min-height:200px">
+        <span class="image-placeholder-label">🔥</span>
+        <div class="image-placeholder-note">Copper casting process — molten metal poured into mold, Takaoka workshop</div>
+      </div>
+      <div class="image-placeholder" style="aspect-ratio:1;min-height:200px">
+        <span class="image-placeholder-label">💧</span>
+        <div class="image-placeholder-note">Washi papermaking — artisan lifting screen from water, Nanto</div>
+      </div>
+      <div class="image-placeholder" style="aspect-ratio:1;min-height:200px">
+        <span class="image-placeholder-label">🏔️</span>
+        <div class="image-placeholder-note">Mountain landscape connecting all three regions — ideally aerial or drone shot</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;margin-top:80px;padding:48px;border:1px solid var(--border2);background:var(--navy2)" class="fade-in">
+      <p style="font-size:13px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Ready to explore?</p>
+      <h3 style="font-size:28px;margin-bottom:24px">Meet the Artisans Behind Craftvalley</h3>
+      <a href="producers.html" class="btn-primary" data-i18n="producers.viewAll">View All Artisans</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo-en">Craft<span>valley</span></p>
+        <p class="footer-logo-ja">クラフトバレー</p>
+        <p class="footer-tagline" data-i18n="footer.tagline">Crafted in Japan's Mountain Heartland</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.links">Quick Links</h4>
+        <ul>
+          <li><a href="about.html" data-i18n="nav.about">About Craftvalley</a></li>
+          <li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li>
+          <li><a href="products.html" data-i18n="nav.products">Shop</a></li>
+          <li><a href="news.html" data-i18n="nav.news">News</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Events</h4>
+        <ul>
+          <li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a></li>
+          <li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.newsletter">Newsletter</h4>
+        <form class="footer-newsletter-form" onsubmit="return false">
+          <input type="email" placeholder="Your email address">
+          <button type="submit" data-i18n="footer.newsletterBtn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy" data-i18n="footer.copyright">© 2025 Craftvalley Initiative. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="footer.terms">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/js/translations.js"></script>
+<script src="../shared/js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

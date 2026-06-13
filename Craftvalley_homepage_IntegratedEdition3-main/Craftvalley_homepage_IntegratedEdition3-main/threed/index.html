@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D | Craftvalley — Japan's Mountain Craft Heritage</title>
+  <meta name="description" content="Craftvalley connects master artisans of Toyama, Hida and Komatsu with the world.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/threed-fx.css">
+</head>
+<body class="threed-body">
+
+<!-- ===== LOADING SCREEN ===== -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-ring"></div>
+    <span class="loader-text">CRAFTVALLEY</span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-en">Craft<span>valley</span></span>
+      <span class="nav-logo-ja">クラフトバレー</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li>
+      <li><a href="products.html" data-i18n="nav.products">Shop</a></li>
+      <li class="nav-dropdown">
+        <a href="events-upcoming.html" data-i18n="nav.events">Events</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a></li>
+          <li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html" data-i18n="nav.news">News</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-lang">日本語</button>
+      <button class="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobile-nav">
+  <a href="index.html" data-i18n="nav.home">Home</a>
+  <a href="about.html" data-i18n="nav.about">About</a>
+  <a href="producers.html" data-i18n="nav.producers">Artisans</a>
+  <a href="products.html" data-i18n="nav.products">Shop</a>
+  <a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a>
+  <a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a>
+  <a href="calendar.html" data-i18n="nav.calendar">Calendar</a>
+  <a href="news.html" data-i18n="nav.news">News</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  <button class="mobile-lang">日本語</button>
+</div>
+
+<!-- ===== CURSOR ===== -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursor-trail"></div>
+
+<!-- ===== HERO — full-viewport, mouse-parallax ===== -->
+<section class="hero-3d" id="hero">
+
+  <!-- Depth background layers (parallax) -->
+  <div class="hero-bg-layer layer-far"  data-depth="0.05"></div>
+  <div class="hero-bg-layer layer-mid"  data-depth="0.15"></div>
+  <div class="hero-bg-layer layer-near" data-depth="0.3"></div>
+
+  <!-- Floating orbs -->
+  <div class="hero-orb orb-1"></div>
+  <div class="hero-orb orb-2"></div>
+  <div class="hero-orb orb-3"></div>
+
+  <div class="container hero-3d-inner">
+    <!-- Left: text block -->
+    <div class="hero-copy">
+      <div class="hero-badge reveal-badge">
+        <span class="badge-dot"></span>
+        <span data-i18n="hero.badge">Japan's Hidden Craft Treasure</span>
+      </div>
+      <div class="hero-ja-tag split-text" data-split="chars">クラフトバレー — 富山・飛騨・小松</div>
+      <h1 class="hero-title-3d">
+        <span class="line-wrap"><span class="line-inner">Ancient</span></span>
+        <span class="line-wrap"><span class="line-inner accent">Craft</span></span>
+        <span class="line-wrap"><span class="line-inner">Modern</span></span>
+        <span class="line-wrap"><span class="line-inner accent-dim">World</span></span>
+      </h1>
+      <p class="hero-sub reveal-up" data-i18n="hero.subtitle">A new vision for Japan's hidden treasure belt — Toyama, Hida &amp; Komatsu</p>
+      <div class="hero-ctas reveal-up" style="--delay:.1s">
+        <a href="about.html" class="btn-primary" data-i18n="hero.cta">Discover Craftvalley</a>
+        <a href="products.html" class="btn-outline" data-i18n="hero.ctaShop">Browse the Shop</a>
+      </div>
+    </div>
+
+    <!-- Right: 3D floating product showcase -->
+    <div class="hero-showcase" id="heroShowcase">
+      <div class="showcase-stage" id="showcaseStage">
+        <!-- Main product frame -->
+        <div class="showcase-frame">
+          <div class="image-placeholder" style="height:100%;min-height:420px;border-radius:0">
+            <span class="image-placeholder-label" style="font-size:56px">🔮</span>
+            <div class="image-placeholder-note">HERO — Takaoka copper vase floating in deep space. Dramatic rim lighting. Vertical.</div>
+          </div>
+          <!-- Scan line effect -->
+          <div class="scan-line"></div>
+          <!-- Corner brackets -->
+          <div class="frame-corner fc-tl"></div>
+          <div class="frame-corner fc-tr"></div>
+          <div class="frame-corner fc-bl"></div>
+          <div class="frame-corner fc-br"></div>
+        </div>
+
+        <!-- Floating feature badges -->
+        <div class="float-badge fb-1 float-anim">
+          <span class="fb-icon">🥇</span>
+          <div><strong>Award-winning</strong><br><small>Craft Excellence 2024</small></div>
+        </div>
+        <div class="float-badge fb-2 float-anim" style="--delay:0.4s">
+          <span class="fb-icon">✈️</span>
+          <div><strong>Ships Worldwide</strong><br><small>50+ countries</small></div>
+        </div>
+        <div class="float-badge fb-3 float-anim" style="--delay:0.8s">
+          <span class="fb-icon">🤲</span>
+          <div><strong>Handmade</strong><br><small>400yr tradition</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats band -->
+  <div class="hero-stats-band reveal-up" style="--delay:.2s">
+    <div class="stat-item">
+      <div class="stat-num counter" data-target="6">0</div>
+      <div class="stat-label">Artisan Studios</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num counter" data-target="3">0</div>
+      <div class="stat-label">Prefectures</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num counter" data-target="400" data-suffix="+">0</div>
+      <div class="stat-label">Years of Craft</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num counter" data-target="8">0</div>
+      <div class="stat-label">Products</div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-track"><div class="scroll-thumb"></div></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- ===== CINEMATIC REVEAL — pinned scroll section ===== -->
+<section class="section-cinematic" id="cinematic">
+  <div class="cinematic-sticky">
+    <!-- Background layers -->
+    <div class="cin-bg"></div>
+    <div class="cin-overlay"></div>
+
+    <!-- Scrolling text panels -->
+    <div class="cin-panels" id="cinPanels">
+      <div class="cin-panel active" data-panel="0">
+        <div class="cin-tag">— Place</div>
+        <h2 class="cin-heading">A Ribbon of<br><em>Cultural Heritage</em></h2>
+        <p class="cin-body">Three prefectures. One ancient mountain corridor. A living landscape where craft and nature have been inseparable for centuries.</p>
+      </div>
+      <div class="cin-panel" data-panel="1">
+        <div class="cin-tag">— People</div>
+        <h2 class="cin-heading">Masters of<br><em>Living Tradition</em></h2>
+        <p class="cin-body">Six studios. Six families. Each carrying a craft tradition passed down through generations — unchanged in essence, reimagined for now.</p>
+      </div>
+      <div class="cin-panel" data-panel="2">
+        <div class="cin-tag">— Craft</div>
+        <h2 class="cin-heading">Made with<br><em>Japanese Precision</em></h2>
+        <p class="cin-body">Copper, lacquer, washi, blade steel — objects shaped by hands that have spent decades learning the intelligence of materials.</p>
+      </div>
+    </div>
+
+    <!-- Progress indicators -->
+    <div class="cin-progress">
+      <div class="cin-dot active" data-target="0"></div>
+      <div class="cin-dot" data-target="1"></div>
+      <div class="cin-dot" data-target="2"></div>
+    </div>
+  </div>
+  <!-- Height spacer to drive scroll -->
+  <div class="cinematic-spacer"></div>
+</section>
+
+<!-- ===== ARTISANS — 3D cards that fly in from depth ===== -->
+<section class="section-producers" id="producers">
+  <div class="container">
+    <div class="section-intro depth-reveal">
+      <div class="section-label">Artisans</div>
+      <h2 class="section-heading">Meet the <em>Makers</em></h2>
+      <p class="section-sub" data-i18n="producers.subheading">Each piece carries a name, a family, a history.</p>
+    </div>
+    <div class="producers-grid" id="producers-grid" data-limit="3"></div>
+    <div class="section-cta depth-reveal">
+      <a href="producers.html" class="btn-outline" data-i18n="producers.viewAll">View All Artisans</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS — horizontal floating shelf ===== -->
+<section class="section-products" id="products">
+  <div class="container">
+    <div class="section-intro depth-reveal">
+      <div class="section-label">Collection</div>
+      <h2 class="section-heading">The <em>Collection</em></h2>
+      <p class="section-sub" data-i18n="products.subheading">Authentic Japanese craft — available worldwide.</p>
+    </div>
+    <div class="products-grid" id="products-grid" data-limit="4"></div>
+    <div class="section-cta depth-reveal">
+      <a href="products.html" class="btn-gold" data-i18n="products.viewAll">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAP — parallax ===== -->
+<section class="section-map" id="map">
+  <div class="container">
+    <div class="map-wrapper">
+      <div class="map-svg-wrap depth-reveal">
+        <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:520px;display:block;margin:0 auto" role="img" aria-label="Craftvalley region map">
+          <rect x="0" y="0" width="520" height="100" fill="#1E2040" opacity="1"/>
+          <text x="260" y="55" text-anchor="middle" fill="#4A90D9" font-size="11" font-family="sans-serif" letter-spacing="3" opacity="0.6">SEA OF JAPAN</text>
+          <path d="M 20 100 L 160 100 L 170 160 L 150 220 L 130 260 L 100 280 L 60 300 L 30 280 L 20 240 L 20 100 Z" fill="#D4AF37" opacity="0.12" stroke="#D4AF37" stroke-width="1.5"/>
+          <text x="85" y="185" text-anchor="middle" fill="#D4AF37" font-size="11" font-family="sans-serif" font-weight="bold">Ishikawa</text>
+          <path d="M 160 100 L 340 100 L 350 120 L 360 160 L 330 200 L 280 220 L 240 240 L 200 260 L 170 260 L 150 220 L 160 160 L 160 100 Z" fill="#E94560" opacity="0.1" stroke="#E94560" stroke-width="1.5"/>
+          <text x="260" y="155" text-anchor="middle" fill="#E94560" font-size="11" font-family="sans-serif" font-weight="bold">Toyama</text>
+          <path d="M 200 260 L 280 220 L 330 200 L 380 220 L 400 260 L 380 320 L 340 360 L 290 380 L 240 360 L 210 320 L 200 260 Z" fill="#52d9ab" opacity="0.1" stroke="#52d9ab" stroke-width="1.5"/>
+          <text x="300" y="295" text-anchor="middle" fill="#52d9ab" font-size="11" font-family="sans-serif" font-weight="bold">Gifu (Hida)</text>
+          <path d="M 90 180 L 200 160 L 310 180 L 330 220 L 290 300 L 230 340 L 160 320 L 100 280 L 80 230 Z" fill="rgba(233,69,96,0.05)" stroke="#E94560" stroke-width="2" stroke-dasharray="6 4"/>
+          <circle cx="185" cy="145" r="8" fill="#E94560" opacity="0.9"/>
+          <text x="197" y="141" fill="#E94560" font-size="11" font-family="sans-serif" font-weight="bold">Takaoka</text>
+          <circle cx="88" cy="210" r="8" fill="#D4AF37" opacity="0.9"/>
+          <text x="100" y="206" fill="#D4AF37" font-size="11" font-family="sans-serif" font-weight="bold">Komatsu</text>
+          <circle cx="295" cy="270" r="8" fill="#52d9ab" opacity="0.9"/>
+          <text x="307" y="266" fill="#52d9ab" font-size="11" font-family="sans-serif" font-weight="bold">Hida City</text>
+          <text x="200" y="255" fill="#E94560" font-size="9" font-family="sans-serif" letter-spacing="1.5" opacity="0.5" transform="rotate(-15,200,255)">— CRAFTVALLEY ZONE —</text>
+          <line x1="40" y1="440" x2="120" y2="440" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <text x="80" y="458" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="10" font-family="sans-serif">approx. 50km</text>
+          <g transform="translate(475,50)">
+            <line x1="0" y1="18" x2="0" y2="-18" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+            <polygon points="0,-20 -4,-8 4,-8" fill="rgba(255,255,255,.3)"/>
+            <text x="0" y="30" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="10" font-family="sans-serif">N</text>
+          </g>
+          <rect x="1" y="1" width="518" height="478" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1" rx="12"/>
+        </svg>
+      </div>
+      <div class="map-text depth-reveal">
+        <div class="section-label">The Region</div>
+        <h2 class="section-heading" data-i18n="map.heading">The Craftvalley <em>Region</em></h2>
+        <p data-i18n="map.desc">The Craftvalley zone spans three prefectures along Japan's central mountain ranges — a ribbon of cultural heritage that few visitors have discovered.</p>
+        <div class="map-legend">
+          <div class="legend-item"><div class="legend-dot dot-toyama"></div><span data-i18n="map.toyama">Toyama Pref. (Western Zone)</span></div>
+          <div class="legend-item"><div class="legend-dot dot-gifu"></div><span data-i18n="map.gifu">Gifu Pref. (Hida City)</span></div>
+          <div class="legend-item"><div class="legend-dot dot-ishikawa"></div><span data-i18n="map.ishikawa">Ishikawa Pref. (Komatsu City)</span></div>
+          <div class="legend-item"><div class="legend-dot dot-zone"></div><span data-i18n="map.legend">Craftvalley Zone</span></div>
+        </div>
+        <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px">
+          <span class="region-chip" style="color:#E94560;border-color:rgba(233,69,96,.35)">Takaoka 高岡</span>
+          <span class="region-chip" style="color:#E94560;border-color:rgba(233,69,96,.35)">Nanto 南砺</span>
+          <span class="region-chip" style="color:#52d9ab;border-color:rgba(82,217,171,.35)">Hida 飛騨</span>
+          <span class="region-chip" style="color:#D4AF37;border-color:rgba(212,175,55,.35)">Komatsu 小松</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EVENTS ===== -->
+<section class="section-events-preview" id="events">
+  <div class="container">
+    <div class="section-intro depth-reveal">
+      <div class="section-label">Events</div>
+      <h2 class="section-heading" data-i18n="events.heading"><em>Events</em></h2>
+    </div>
+    <div class="events-tabs">
+      <button class="event-tab active" data-tab="upcoming" data-i18n="nav.eventsUpcoming">Upcoming Events</button>
+      <button class="event-tab" data-tab="past" data-i18n="nav.eventsPast">Past Events</button>
+    </div>
+    <div class="tab-pane" data-pane="upcoming">
+      <div class="event-list" id="upcoming-events-list"></div>
+      <div style="text-align:center;margin-top:28px">
+        <a href="events-upcoming.html" class="btn-outline" data-i18n="nav.eventsUpcoming">All Upcoming Events →</a>
+      </div>
+    </div>
+    <div class="tab-pane" data-pane="past" style="display:none">
+      <div class="event-list" id="past-events-list"></div>
+      <div style="text-align:center;margin-top:28px">
+        <a href="events-past.html" class="btn-outline" data-i18n="nav.eventsPast">View Event History →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWS ===== -->
+<section class="section-news" id="news">
+  <div class="container">
+    <div class="section-intro depth-reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px">
+      <div>
+        <div class="section-label">News</div>
+        <h2 class="section-heading" data-i18n="news.heading">News &amp; <em>Announcements</em></h2>
+      </div>
+      <a href="news.html" class="btn-outline">All News →</a>
+    </div>
+    <div class="news-grid" id="news-grid"></div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-logo-en">Craft<span>valley</span></p>
+        <p class="footer-logo-ja">クラフトバレー</p>
+        <p class="footer-tagline" data-i18n="footer.tagline">Crafted in Japan's Mountain Heartland</p>
+        <div style="margin-top:20px;display:flex;gap:12px">
+          <a href="#" class="footer-social">Instagram</a>
+          <a href="#" class="footer-social">Facebook</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.links">Quick Links</h4>
+        <ul>
+          <li><a href="about.html" data-i18n="nav.about">About Craftvalley</a></li>
+          <li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li>
+          <li><a href="products.html" data-i18n="nav.products">Shop</a></li>
+          <li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Events</a></li>
+          <li><a href="news.html" data-i18n="nav.news">News</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Craftvalley</h4>
+        <ul>
+          <li><a href="#">Wholesale / B2B</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Event Calendar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.newsletter">Newsletter</h4>
+        <p style="font-size:13px;color:rgba(240,240,255,.35);margin-bottom:10px">New products &amp; event news monthly.</p>
+        <form class="footer-newsletter-form" onsubmit="return false">
+          <input type="email" placeholder="Your email address" data-i18n-placeholder="footer.newsletterPlaceholder">
+          <button type="submit" data-i18n="footer.newsletterBtn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy" data-i18n="footer.copyright">© 2025 Craftvalley Initiative. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="footer.terms">Terms of Use</a>
+        <a href="../index.html">← Version Select</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/js/translations.js"></script>
+<script src="../shared/js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/threed-fx.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple | Event Calendar — Craftvalley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-en">Craft<span>valley</span></span><span class="nav-logo-ja">クラフトバレー</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About Craftvalley</a></li>
+      <li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li>
+      <li><a href="products.html" data-i18n="nav.products">Shop</a></li>
+      <li class="nav-dropdown"><a href="events-upcoming.html" class="active" data-i18n="nav.events">Events</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a></li>
+          <li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html" data-i18n="nav.news">News</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions" style="display:flex;align-items:center;gap:10px">
+      <button class="nav-lang">日本語</button>
+      <button class="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobile-nav">
+  <a href="index.html" data-i18n="nav.home">Home</a>
+  <a href="about.html" data-i18n="nav.about">About Craftvalley</a>
+  <a href="producers.html" data-i18n="nav.producers">Artisans</a>
+  <a href="products.html" data-i18n="nav.products">Shop</a>
+  <a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a>
+  <a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a>
+  <a href="calendar.html" data-i18n="nav.calendar">Calendar</a>
+  <a href="news.html" data-i18n="nav.news">News</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  <button class="mobile-lang">日本語</button>
+</div>
+
+<div class="page-hero" data-kanji="暦">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span data-i18n="nav.events">Events</span><span>›</span><span data-i18n="nav.calendar">Calendar</span></div>
+    <div class="section-label">📅 Event Calendar</div>
+    <h1 data-i18n="calendar.heading">Event Calendar</h1>
+    <p style="color:var(--textm);font-size:15px;margin-top:10px">Click on a highlighted date to see event details.</p>
+  </div>
+</div>
+
+<div class="calendar-page">
+  <div class="container">
+
+    <div style="display:flex;gap:8px;margin-bottom:40px;flex-wrap:wrap">
+      <a href="events-upcoming.html" class="btn-outline" style="border-radius:50px;padding:10px 24px;font-size:13px" data-i18n="nav.eventsUpcoming">Upcoming Events</a>
+      <a href="events-past.html" class="btn-outline" style="border-radius:50px;padding:10px 24px;font-size:13px" data-i18n="nav.eventsPast">Past Events</a>
+      <a href="calendar.html" class="btn-primary" style="border-radius:50px;padding:10px 24px;font-size:13px" data-i18n="nav.calendar">Calendar</a>
+    </div>
+
+    <!-- Calendar widget -->
+    <div class="calendar-wrap" id="cv-calendar" style="background:var(--white);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-lg)">
+      <div class="cal-nav">
+        <button class="cal-prev" data-i18n="calendar.prev">← Prev</button>
+        <h2 class="cal-month-title">—</h2>
+        <button class="cal-next" data-i18n="calendar.next">Next →</button>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div class="cal-legend">
+        <div class="cal-legend-item"><div class="cal-legend-dot dot-past"></div><span data-i18n="calendar.past">Past event</span></div>
+        <div class="cal-legend-item"><div class="cal-legend-dot dot-upcoming" style="background:var(--teal)"></div><span data-i18n="calendar.upcoming">Upcoming event</span></div>
+        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:transparent;border:2px solid var(--red)"></div><span data-i18n="calendar.today">Today</span></div>
+      </div>
+      <div class="cal-event-popup" id="cal-event-popup"></div>
+    </div>
+
+    <!-- Full list below calendar -->
+    <div style="margin-top:56px">
+      <div class="section-label" style="margin-bottom:20px">📅 Upcoming</div>
+      <div id="full-events-list-upcoming"></div>
+      <div class="section-label" style="margin-top:40px;margin-bottom:20px;background:var(--textm)">📸 Past Events</div>
+      <div id="full-events-list-past"></div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="footer-logo-en">Craft<span>valley</span></p><p class="footer-logo-ja">クラフトバレー</p><p class="footer-tagline" data-i18n="footer.tagline">Crafted in Japan's Mountain Heartland</p></div>
+      <div class="footer-col"><h4 data-i18n="footer.links">Quick Links</h4><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li><li><a href="products.html" data-i18n="nav.products">Shop</a></li><li><a href="contact.html" data-i18n="nav.contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Events</h4><ul><li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming</a></li><li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li><li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li></ul></div>
+      <div class="footer-col"><h4 data-i18n="footer.newsletter">Newsletter</h4><form class="footer-newsletter-form" onsubmit="return false"><input type="email" placeholder="Your email address"><button type="submit" data-i18n="footer.newsletterBtn">Subscribe</button></form></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy" data-i18n="footer.copyright">© 2025 Craftvalley Initiative.</p><div class="footer-legal"><a href="#" data-i18n="footer.privacy">Privacy Policy</a><a href="#" data-i18n="footer.terms">Terms of Use</a></div></div>
+  </div>
+</footer>
+<script src="../shared/js/translations.js"></script>
+<script src="../shared/js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (typeof CV_DATA === "undefined") return;
+  var lang = window.CV_LANG || "en";
+  var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var monthsJa = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+
+  function miniCard(e, isPast) {
+    var d = new Date(e.date);
+    var div = document.createElement("div");
+    div.style.cssText = "display:grid;grid-template-columns:80px 1fr;gap:16px;padding:16px 20px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:10px;opacity:" + (isPast ? "0.75" : "1") + ";border-left:4px solid " + (isPast ? "var(--textm)" : "var(--teal)");
+    div.innerHTML =
+      '<div style="text-align:center">' +
+        '<div style="font-size:11px;font-weight:700;color:var(--red)">' + (lang==="ja" ? monthsJa[d.getMonth()] : months[d.getMonth()]) + '</div>' +
+        '<div style="font-size:26px;font-weight:700;line-height:1">' + d.getDate() + '</div>' +
+        '<div style="font-size:10px;color:var(--textm)">' + d.getFullYear() + '</div>' +
+      '</div>' +
+      '<div>' +
+        '<p style="font-size:15px;font-weight:700;margin-bottom:4px">' + (lang==="ja" ? e.titleJa : e.titleEn) + '</p>' +
+        '<p style="font-size:12px;color:var(--textm)">📍 ' + (lang==="ja" ? e.locationJa : e.locationEn) + '</p>' +
+      '</div>';
+    return div;
+  }
+
+  var uList = document.getElementById("full-events-list-upcoming");
+  var pList = document.getElementById("full-events-list-past");
+  if (uList) CV_DATA.events.upcoming.forEach(function(e){ uList.appendChild(miniCard(e, false)); });
+  if (pList) CV_DATA.events.past.forEach(function(e){ pList.appendChild(miniCard(e, true)); });
+});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | 和風 — Craftvalley</title>
+  <meta name="description" content="Contact Craftvalley — general inquiries, orders, wholesale, press and artisan partnerships. English inquiries welcome.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<button class="sidebar-hamburger" id="sidebar-hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="page-wrapper">
+
+  <aside class="sidebar" id="main-sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-kamon"></div>
+      <span class="sidebar-logo-text">クラフトバレー</span>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html"><span class="nav-ja">ホーム</span><span class="nav-en">Home</span></a></li>
+      <li><a href="about.html"><span class="nav-ja">概要</span><span class="nav-en">About</span></a></li>
+      <li><a href="producers.html"><span class="nav-ja">職人</span><span class="nav-en">Artisans</span></a></li>
+      <li><a href="products.html"><span class="nav-ja">商品</span><span class="nav-en">Shop</span></a></li>
+      <li><a href="events-upcoming.html"><span class="nav-ja">催事</span><span class="nav-en">Events</span></a></li>
+      <li><a href="news.html"><span class="nav-ja">情報</span><span class="nav-en">News</span></a></li>
+      <li><a href="contact.html" class="active"><span class="nav-ja">問合</span><span class="nav-en">Contact</span></a></li>
+    </ul>
+    <div class="sidebar-bottom">
+      <button class="sidebar-lang">日本語</button>
+    </div>
+  </aside>
+
+  <div class="main-content">
+
+    <div class="page-hero" data-kanji="問">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a><span>›</span><span data-i18n="nav.contact">Contact</span></div>
+        <div class="section-label">Contact — 問合</div>
+        <h1 data-i18n="contact.heading">Get in Touch</h1>
+        <p class="lead" data-i18n="contact.subheading">Questions about Craftvalley, wholesale inquiries, press, or partnership? We'd love to hear from you.</p>
+      </div>
+    </div>
+
+    <div class="contact-page">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Info column -->
+          <div class="contact-info fade-in">
+            <h3>Craftvalley Secretariat — 事務局</h3>
+            <p>Based in Toyama, Japan. We typically respond within 2 business days (Japan time, UTC+9).</p>
+
+            <div class="contact-info-item">
+              <span class="contact-info-icon">📍</span>
+              <div class="contact-info-text">
+                Craftvalley Initiative Office<br>
+                Takaoka City, Toyama Prefecture<br>
+                Japan 〒933-xxxx
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <span class="contact-info-icon">✉️</span>
+              <div class="contact-info-text">
+                hello@craftvalley.jp<br>
+                <span style="font-size:12px;color:var(--texts)">English inquiries welcome</span>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <span class="contact-info-icon">🕐</span>
+              <div class="contact-info-text">
+                Mon–Fri 9:00–17:00 JST<br>
+                (UTC+9 · Japan Standard Time)
+              </div>
+            </div>
+
+            <!-- Map placeholder -->
+            <div class="gallery-item" style="margin-top:24px">
+              <div class="image-placeholder" style="aspect-ratio:4/3;min-height:200px;height:auto">
+                <span class="image-placeholder-label">🗺️</span>
+                <div class="image-placeholder-note">CONTACT MAP — Google Maps embed of Takaoka City, Toyama Prefecture.</div>
+              </div>
+            </div>
+
+            <!-- Quick contact links -->
+            <div class="quick-links">
+              <a href="#"><span>🏢 Wholesale &amp; B2B</span><span>→</span></a>
+              <a href="#"><span>📸 Press &amp; Media Kit</span><span>→</span></a>
+              <a href="#"><span>🤲 Join as Artisan Partner</span><span>→</span></a>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="fade-in fade-in-delay-2">
+            <div style="background:var(--washi);border:1px solid var(--border);padding:36px;position:relative">
+              <form id="cv-contact-form" novalidate>
+                <div class="form-group">
+                  <label class="form-label" for="contact-name" data-i18n="contact.name">Your Name</label>
+                  <input class="form-input" type="text" id="contact-name" name="name" required placeholder="Jane Smith">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-email" data-i18n="contact.email">Email Address</label>
+                  <input class="form-input" type="email" id="contact-email" name="email" required placeholder="jane@example.com">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-subject" data-i18n="contact.subject">Subject</label>
+                  <select class="form-select" id="contact-subject" name="subject">
+                    <option value="">—</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="order">Product / Order</option>
+                    <option value="wholesale">Wholesale / B2B</option>
+                    <option value="press">Press &amp; Media</option>
+                    <option value="collab">Artisan Collaboration</option>
+                    <option value="event">Event Inquiry</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-message" data-i18n="contact.message">Message</label>
+                  <textarea class="form-textarea" id="contact-message" name="message" required placeholder="Tell us how we can help…" rows="6"></textarea>
+                </div>
+                <p style="font-size:12px;color:var(--texts);margin-bottom:16px;font-family:var(--ff-ja)">
+                  By submitting you agree to our <a href="#" style="color:var(--aka)" data-i18n="footer.privacy">Privacy Policy</a>.
+                </p>
+                <button type="submit" class="form-submit" data-i18n="contact.submit">Send Message</button>
+                <div class="form-message" id="form-message"></div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FAQ -->
+        <div style="margin-top:64px" class="fade-in">
+          <div class="section-label" style="margin-bottom:24px" data-i18n="ui.faqHeading">Frequently Asked Questions</div>
+          <div class="faq-grid">
+            <div class="faq-item">
+              <p class="faq-q" data-i18n="ui.faq1q">Do you ship internationally?</p>
+              <p class="faq-a" data-i18n="ui.faq1a">Yes — we ship to all 50 US states via DHL Express. For other countries, please contact us.</p>
+            </div>
+            <div class="faq-item">
+              <p class="faq-q" data-i18n="ui.faq2q">How long does delivery take?</p>
+              <p class="faq-a" data-i18n="ui.faq2a">3–5 business days to the US from our Toyama fulfillment center.</p>
+            </div>
+            <div class="faq-item">
+              <p class="faq-q" data-i18n="ui.faq3q">Can I visit the workshops?</p>
+              <p class="faq-a" data-i18n="ui.faq3a">Yes — each artisan's profile page lists directions from Toyama Station and visit policies.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <p class="footer-logo-en">Craft<span>valley</span></p>
+            <p class="footer-logo-ja">クラフトバレー</p>
+            <p class="footer-tagline" data-i18n="footer.tagline">Crafted in Japan's Mountain Heartland</p>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="footer.links">Quick Links</h4>
+            <ul>
+              <li><a href="about.html" data-i18n="nav.about">About Craftvalley</a></li>
+              <li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li>
+              <li><a href="products.html" data-i18n="nav.products">Shop</a></li>
+              <li><a href="news.html" data-i18n="nav.news">News</a></li>
+              <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="nav.events">Events</h4>
+            <ul>
+              <li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a></li>
+              <li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li>
+              <li><a href="calendar.html" data-i18n="nav.calendar">Event Calendar</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-i18n="footer.newsletter">Newsletter</h4>
+            <p style="font-size:12px;color:rgba(244,237,216,.4);margin-bottom:10px;font-family:var(--ff-ja)">新作・催事のお知らせを毎月お届けします。</p>
+            <form class="footer-newsletter-form" onsubmit="return false">
+              <input type="email" placeholder="Your email address" data-i18n-placeholder="footer.newsletterPlaceholder">
+              <button type="submit" data-i18n="footer.newsletterBtn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copy" data-i18n="footer.copyright">© 2026 Craftvalley Initiative. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="#" data-i18n="footer.terms">Terms of Use</a>
+            <a href="../index.html">← Version Select</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.main-content -->
+</div><!-- /.page-wrapper -->
+
+<script src="../shared/js/translations.js"></script>
+<script src="../shared/js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

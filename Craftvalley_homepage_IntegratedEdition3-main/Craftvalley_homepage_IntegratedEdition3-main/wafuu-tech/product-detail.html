@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>和風テック | Product — Craftvalley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-en">Craft<span>valley</span></span><span class="nav-logo-ja">クラフトバレー</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About Craftvalley</a></li>
+      <li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li>
+      <li><a href="products.html" class="active" data-i18n="nav.products">Shop</a></li>
+      <li class="nav-dropdown"><a href="events-upcoming.html" data-i18n="nav.events">Events</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a></li>
+          <li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html" data-i18n="nav.news">News</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions" style="display:flex;align-items:center;gap:10px">
+      <button class="nav-lang">日本語</button>
+      <button class="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobile-nav">
+  <a href="index.html" data-i18n="nav.home">Home</a>
+  <a href="about.html" data-i18n="nav.about">About Craftvalley</a>
+  <a href="producers.html" data-i18n="nav.producers">Artisans</a>
+  <a href="products.html" data-i18n="nav.products">Shop</a>
+  <a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a>
+  <a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a>
+  <a href="calendar.html" data-i18n="nav.calendar">Calendar</a>
+  <a href="news.html" data-i18n="nav.news">News</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  <button class="mobile-lang">日本語</button>
+</div>
+
+<div style="height:var(--nav-h)"></div>
+<div class="container">
+  <div class="breadcrumb" style="padding:20px 0">
+    <a href="index.html">Home</a><span>›</span>
+    <a href="products.html" data-i18n="nav.products">Shop</a><span>›</span>
+    <span id="breadcrumb-product">Product</span>
+  </div>
+</div>
+
+<div class="product-detail container" id="product-detail-content">
+  <div style="padding:80px 0;text-align:center;color:var(--textm)">Loading product…</div>
+</div>
+
+<!-- Related products -->
+<div class="container" style="padding-bottom:var(--section-pad)">
+  <div style="border-top:2px solid #f0e8e0;padding-top:40px">
+    <div class="section-label" style="margin-bottom:20px">✨ You may also like</div>
+    <div class="products-grid" id="related-products-grid" style="grid-template-columns:repeat(4,1fr)"></div>
+  </div>
+  <div style="text-align:center;margin-top:32px">
+    <a href="products.html" class="btn-outline">← Back to Shop</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="footer-logo-en">Craft<span>valley</span></p><p class="footer-logo-ja">クラフトバレー</p><p class="footer-tagline" data-i18n="footer.tagline">Crafted in Japan's Mountain Heartland</p></div>
+      <div class="footer-col"><h4 data-i18n="footer.links">Quick Links</h4><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li><li><a href="products.html" data-i18n="nav.products">Shop</a></li><li><a href="contact.html" data-i18n="nav.contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Events</h4><ul><li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming</a></li><li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li><li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li></ul></div>
+      <div class="footer-col"><h4 data-i18n="footer.newsletter">Newsletter</h4><form class="footer-newsletter-form" onsubmit="return false"><input type="email" placeholder="Your email address"><button type="submit" data-i18n="footer.newsletterBtn">Subscribe</button></form></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy" data-i18n="footer.copyright">© 2025 Craftvalley Initiative.</p><div class="footer-legal"><a href="#" data-i18n="footer.privacy">Privacy Policy</a><a href="#" data-i18n="footer.terms">Terms of Use</a></div></div>
+  </div>
+</footer>
+<script src="../shared/js/translations.js"></script>
+<script src="../shared/js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var params = new URLSearchParams(window.location.search);
+  var id = params.get("id");
+  if (typeof CV_DATA !== "undefined" && id) {
+    var p = CV_DATA.products.find(function(x){ return x.id === id; });
+    if (p) {
+      var lang = window.CV_LANG || "en";
+      document.getElementById("breadcrumb-product").textContent = lang === "ja" ? p.nameJa : p.nameEn;
+      var related = CV_DATA.products.filter(function(x){ return x.id !== id; }).slice(0, 4);
+      var grid = document.getElementById("related-products-grid");
+      related.forEach(function(r) {
+        var card = document.createElement("a");
+        card.href = "product-detail.html?id=" + r.id;
+        card.className = "product-card";
+        card.innerHTML =
+          '<div class="product-card-img"><div class="image-placeholder"><span class="image-placeholder-label">🎁</span>' +
+          '<div class="image-placeholder-note">' + r.image + '</div></div></div>' +
+          '<div class="product-card-body"><p class="product-name">' + (lang==="ja"?r.nameJa:r.nameEn) + '</p>' +
+          '<p class="product-price">$' + r.price + '</p></div>';
+        grid.appendChild(card);
+      });
+    }
+  }
+});
+</script>
+</body>
+</html>
+

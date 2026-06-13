@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>和風テック | Shop — Craftvalley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-en">Craft<span>valley</span></span><span class="nav-logo-ja">クラフトバレー</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About Craftvalley</a></li>
+      <li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li>
+      <li><a href="products.html" class="active" data-i18n="nav.products">Shop</a></li>
+      <li class="nav-dropdown"><a href="events-upcoming.html" data-i18n="nav.events">Events</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a></li>
+          <li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li>
+          <li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html" data-i18n="nav.news">News</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions" style="display:flex;align-items:center;gap:10px">
+      <button class="nav-lang">日本語</button>
+      <button class="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobile-nav">
+  <a href="index.html" data-i18n="nav.home">Home</a>
+  <a href="about.html" data-i18n="nav.about">About Craftvalley</a>
+  <a href="producers.html" data-i18n="nav.producers">Artisans</a>
+  <a href="products.html" data-i18n="nav.products">Shop</a>
+  <a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming Events</a>
+  <a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a>
+  <a href="calendar.html" data-i18n="nav.calendar">Calendar</a>
+  <a href="news.html" data-i18n="nav.news">News</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  <button class="mobile-lang">日本語</button>
+</div>
+
+<div class="page-hero" data-kanji="品">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span data-i18n="nav.products">Shop</span></div>
+    <div class="section-label">🎁 Collection</div>
+    <h1 data-i18n="products.heading">The Collection</h1>
+    <p style="color:var(--textm);font-size:17px;margin-top:12px" data-i18n="products.subheading">Authentic Japanese craft — available worldwide.</p>
+  </div>
+</div>
+
+<div class="products-page">
+  <div class="container">
+
+    <!-- Shipping banner -->
+    <div style="background:linear-gradient(135deg,rgba(22,160,133,0.1),rgba(22,160,133,0.05));border:2px solid var(--teal);border-radius:var(--radius-lg);padding:16px 24px;margin-bottom:32px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <span style="font-size:24px">✈️</span>
+      <div>
+        <p style="font-size:14px;font-weight:700;color:var(--teal)">Free shipping to the US on orders over $150</p>
+        <p style="font-size:13px;color:var(--textm)">DHL Express 3–5 business days · Ships from Toyama, Japan</p>
+      </div>
+    </div>
+
+    <!-- Filter -->
+    <div class="products-filter" id="products-filter-bar">
+      <button class="filter-btn active" data-filter="all" data-i18n="products.filterAll">All</button>
+      <button class="filter-btn" data-filter="craft" data-i18n="products.filterCraft">Craft Objects</button>
+      <button class="filter-btn" data-filter="food" data-i18n="products.filterFood">Food &amp; Drink</button>
+      <button class="filter-btn" data-filter="paper" data-i18n="products.filterPaper">Paper &amp; Textile</button>
+    </div>
+
+    <div class="products-page-grid" id="products-grid">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Wholesale CTA -->
+    <div style="margin-top:64px;background:linear-gradient(135deg,#fff5f5,#f0faf8);border-radius:var(--radius-lg);padding:40px;text-align:center;box-shadow:var(--shadow)">
+      <div class="section-label" style="display:inline-flex;margin-bottom:12px">🏢 Business</div>
+      <h3 style="font-size:22px;font-weight:700;margin-bottom:10px">Wholesale &amp; B2B Inquiries</h3>
+      <p style="color:var(--textm);font-size:14px;margin-bottom:20px">Retailers, restaurants and interior designers — we offer wholesale pricing and custom procurement. All products are export-certified.</p>
+      <a href="contact.html" class="btn-primary">Contact for Wholesale →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="footer-logo-en">Craft<span>valley</span></p><p class="footer-logo-ja">クラフトバレー</p><p class="footer-tagline" data-i18n="footer.tagline">Crafted in Japan's Mountain Heartland</p></div>
+      <div class="footer-col"><h4 data-i18n="footer.links">Quick Links</h4><ul><li><a href="about.html" data-i18n="nav.about">About</a></li><li><a href="producers.html" data-i18n="nav.producers">Artisans</a></li><li><a href="products.html" data-i18n="nav.products">Shop</a></li><li><a href="contact.html" data-i18n="nav.contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Events</h4><ul><li><a href="events-upcoming.html" data-i18n="nav.eventsUpcoming">Upcoming</a></li><li><a href="events-past.html" data-i18n="nav.eventsPast">Past Events</a></li><li><a href="calendar.html" data-i18n="nav.calendar">Calendar</a></li></ul></div>
+      <div class="footer-col"><h4 data-i18n="footer.newsletter">Newsletter</h4><form class="footer-newsletter-form" onsubmit="return false"><input type="email" placeholder="Your email address"><button type="submit" data-i18n="footer.newsletterBtn">Subscribe</button></form></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy" data-i18n="footer.copyright">© 2025 Craftvalley Initiative.</p><div class="footer-legal"><a href="#" data-i18n="footer.privacy">Privacy Policy</a><a href="#" data-i18n="footer.terms">Terms of Use</a></div></div>
+  </div>
+</footer>
+<script src="../shared/js/translations.js"></script>
+<script src="../shared/js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("#products-filter-bar .filter-btn").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      document.querySelectorAll("#products-filter-bar .filter-btn").forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      var cat = btn.getAttribute("data-filter");
+      document.querySelectorAll("#products-grid .product-card").forEach(function(card) {
+        card.style.display = (cat === "all" || card.getAttribute("data-category") === cat) ? "" : "none";
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>
+
